@@ -42,7 +42,7 @@ $ gptpy test.py
 [GPTPy] Your code has an error!
 [GPTPy] Error Reason: 
 
-# The user forgot to close the string with a single quote.
+# The user code is missing a closing quotation mark.
 SyntaxError: EOL while scanning string literal
 
 [GPTPy] Here's fixed code:
