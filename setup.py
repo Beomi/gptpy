@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="gptpy",
     version="0.1.0",
-    description="An AI-powered Python Helper powered by GPT-3",
+    description="GPTPy: Your kind Python guide, powered by AI to fix errors and explain code",
     author="Junbum Lee",
     author_email="junbumlee@icloud.com",
     url="https://github.com/beomi/gptpy",

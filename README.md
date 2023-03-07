@@ -1,4 +1,4 @@
-# GPTPy: An AI-powered Python Helper powered by GPT-3 
+# GPTPy: Your kind Python guide, powered by AI to fix errors and explain code
 
 [![asciicast](https://asciinema.org/a/momJh0P8YiZRY5IW0ZwTTynhA.svg)](https://asciinema.org/a/momJh0P8YiZRY5IW0ZwTTynhA)
 
