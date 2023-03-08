@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-
 import argparse
+import os
 import subprocess
 import traceback
 
@@ -43,6 +43,12 @@ def main():
 
     # parse the arguments
     args = parser.parse_args()
+
+    # if args.file path does not exist, print error message and exit
+    if not os.path.exists(args.file):
+        print("[GPTPy] File not found: {}".format(args.file))
+        exit(1)
+
     # run the file with the wrapper
     run_file(args.file, args.args)
 
