@@ -36,7 +36,7 @@ def main():  # define command-line arguments
     )
     parser.add_argument("file", type=str, help="Path to the Python file to run")
     parser.add_argument(
-        "args", nargs="*", help="Arguments to pass to the Python script"
+        "args", nargs=argparse.REMAINDER, help="Arguments to pass to the Python script"
     )
 
     # parse the arguments
