@@ -1,17 +1,19 @@
 #!/usr/bin/env python
 
 import argparse
+import subprocess
 import traceback
 
 import requests
 
 
-def run_file(file_path):
+def run_file(file_path, *args):
     # execute the specified file
     try:
         f = open(file_path, "r")
         txt = f.read()
-        exec(txt)
+        # exec(txt)
+        subprocess.check_call(["python", file_path] + list(args))
     except Exception as e:
         exception_log = traceback.format_exc()
         r = requests.post(
@@ -33,12 +35,15 @@ def main():  # define command-line arguments
         description="Run a Python file with a custom wrapper"
     )
     parser.add_argument("file", type=str, help="Path to the Python file to run")
+    parser.add_argument(
+        "args", nargs="*", help="Arguments to pass to the Python script"
+    )
 
     # parse the arguments
     args = parser.parse_args()
 
     # run the file with the wrapper
-    run_file(args.file)
+    run_file(args.file, *args.args)
 
 
 if __name__ == "__main__":

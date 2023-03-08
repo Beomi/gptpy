@@ -10,8 +10,16 @@ pip install -U gptpy
 
 ## Usage
 
+### Simply run your code
+
 ```bash
 gptpy runnable_python_code.py
+```
+
+### ..or run with arguments
+
+```bash
+gptpy runnable_python_code.py --arg1=1 --arg2=2
 ```
 
 ## Example
