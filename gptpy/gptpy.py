@@ -13,22 +13,37 @@ def run_file(file_path, args_list):
         f = open(file_path, "r")
         txt = f.read()
         cmd_args = ["python", file_path] + args_list
-        subprocess.check_call(cmd_args)
+        try:
+            subprocess.check_output(cmd_args, stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            # print(e.output.decode())
+            exception_log = e.output.decode()
+            print("-" * 50)
+            print("[GPTPy] Your code has an error!")
+            # print(exception_log)
+            r = requests.post(
+                "https://api.gptpy.net/api/gptpy/free",
+                json={"python_interpreter_error": exception_log, "user_code": txt},
+            )
+            print("[GPTPy] Error Reason: ")
+            print(r.json()["explanation"])
+            print("[GPTPy] Here's fixed code:")
+            print(r.json()["suggested_code"])
+            print("-" * 50)
     except Exception as e:
         exception_log = traceback.format_exc()
         print("-" * 50)
-        print("[GPTPy] Your code has an error!")
+        print("[GPTPy] May be Input has error..?")
         print(exception_log)
         r = requests.post(
             "https://api.gptpy.net/api/gptpy/free",
-            json={"python_interpreter_error": exception_log, "user_code": txt},
+            json={"python_interpreter_error": exception_log},
         )
         print("[GPTPy] Error Reason: ")
         print(r.json()["explanation"])
-        print("[GPTPy] Here's fixed code:")
+        print("[GPTPy] Here's solution:")
         print(r.json()["suggested_code"])
         print("-" * 50)
-        # you can also log or handle the exception here
 
 
 def main():

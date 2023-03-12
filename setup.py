@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="gptpy",
-    version="0.1.5",
+    version="0.1.6",
     description="GPTPy: Your kind Python guide, powered by AI to fix errors and explain code",
     author="Junbum Lee",
     author_email="junbumlee@icloud.com",
